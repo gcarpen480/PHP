@@ -18,12 +18,14 @@
             |  1 - Crear tarea           |
             |  2 - Listar tarea          |
             |  3 - Eliminar tarea        |
-            |  4 - Buscar tarea          |
+            |  4 - Editar tarea          |
             |  5 - Salir                 |
             |----------------------------|
         \n";
 
         $cont = fgets(STDIN);
+
+        echo "\n";
 
         switch ($cont) {
             case '1':
@@ -36,7 +38,7 @@
                 eliminarTarea($listaTareas);
                 break;
             case '4':
-                # code...
+                cambiarEstado($listaTareas);
                 break;
             case '5':
                 echo "Saliendo del pograma hasta la proxima!!!";
@@ -73,10 +75,12 @@
             
             foreach($listaTareas as $variable => $valor ){
 
-                echo "ID tarea: " . $variable;
+                echo "******** TAREA ********\n";
+                echo "ID tarea: " . ($variable + 1). "\n";
                 echo "Titulo: " . $valor['Titulo'];
                 echo "Descripcion: " . $valor['Descripcion'];
                 echo "Estado: " . $valor['Estado'];
+                echo "\n-----------------------\n";
             }
         }
 
@@ -101,11 +105,32 @@
 
     }
 
-    function cambiarEstado(&$tareas , $nombre){
+    function cambiarEstado(&$tareas){
 
-        if ($nombre) {
-            # code...
-        }
+        echo "Introduzca el numero de la tarea a modificar el estado: ";
+
+        $id = fgets(STDIN);
+
+        $id = $id - 1;
+
+        foreach($tareas as $variable => $valor ){
+
+            if($id == $variable){
+
+                // echo "Vamos por buen camino";
+
+                echo "Introduzca el nuevo estado de la tarea: ";
+
+                $estado = fgets(STDIN);
+
+                $tareas[$id]['Estado'] = $estado;
+
+
+                echo "Tarea modificada correctamente\n";
+                //break;
+
+            }
+        } 
 
     }
 
