@@ -42,7 +42,7 @@
                 listarProdcutos($listaProductos);
                 break;
             case '5':
-                
+                filtrasrProductos($listaProductos);
                 break;
             case '6':
                 valortotal($listaProductos);
@@ -167,6 +167,35 @@
                 echo "\nProducto modificado correctamente\n";
             }
         }    
+    }
+
+    function filtrasrProductos($listaProductos){
+
+        echo "Introduzca la categoría que desea filtrar: ";
+        $categoria = trim(fgets(STDIN));
+
+        $filtrados = [];
+    
+        foreach ($listaProductos as $producto) {
+            if (trim($producto['Categoria']) === $categoria) {  
+                $filtrados[] = $producto;
+            }
+        }
+
+        if (empty($filtrados)) {
+            echo "No se encontraron productos de esa categoría '$categoria'.\n";
+        } else {
+            // Display the filtered products
+            foreach ($filtrados as $variable => $valor) {
+                echo "******** PRODUCTO ********\n";
+                echo "Nombre: {$valor['Nombre']}";
+                echo "Precio: {$valor['Precio']}";
+                echo "Cantidad: {$valor['Cantidad']}";
+                echo "Categoría: {$valor['Categoria']}";
+                echo "\n-----------------------\n";
+            }
+        }
+
     }
 
     function valortotal($listaProductos){
