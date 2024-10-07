@@ -1,10 +1,20 @@
 <?php
 
-    // Variables para poder realizar los diferentes calculos como son la cantidad del prestamos , la tasa y los años de prestamo
+    // Pedimos al usuario que introduzca la cantidad del prestamo.
 
-    $cantidad_prestamo = 10000;
-    $tasa_interes = 5;
-    $años_prestamo = 5;
+    echo "Introduzca la cantidad del prestamo: ";
+
+    $cantidad_prestamo = trim(fgets(STDIN));
+
+    // Pedimos al usuario que introduzca la tasa de interes
+    echo "Introduzca la tasa de interes: ";
+
+    $tasa_interes = trim(fgets(STDIN));
+
+    // Pedimos al usuario que introduzca los años de prestamo.
+
+    echo "Introduce los años de prestamo: ";
+    $años_prestamo = trim(fgets(STDIN));
 
     calculadora($cantidad_prestamo, $tasa_interes , $años_prestamo);// Llamada a la funcion donde se realizan todos los calculos le pasamos como parametro las variables de antes creadas
 
@@ -18,7 +28,7 @@
 
         // Mostramos los resultados
 
-        echo "Pago mensual: " . $pago_mensual . "\n";
+        echo "\nPago mensual: " . $pago_mensual . "\n";
         echo "Pago total: " . $pago_total . "\n";
 
     }

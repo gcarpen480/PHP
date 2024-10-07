@@ -19,9 +19,21 @@
         switch (trim($cont)) {// Utilizamos un switch el cual tiene como parametro de entrada el valor introducido por teclado
             case '1':// Si la opcion es un 1 creamos un nuevo usuario
 
-                $nombreUsuario = readline("Enter a username: ");
-                $correo = readline("Enter an email: ");
-                $contraseña = readline("Enter a password: ");
+                // Pedimos al usuario que introduzca el nombre de usuario.
+
+                echo "Introduzca el nombre de usuario: ";
+
+                $nombreUsuario = trim(fgets(STDIN));
+
+                // Pedimos al usuario que introduzca el correo de usuario.
+                echo "Introduzca el correo del usuario: ";
+
+                $correo = trim(fgets(STDIN));
+
+                // Pedimos al usuario que introduzca la contraseaña.
+
+                echo "Introduce la contraseña del usuario: ";
+                $contraseña = trim(fgets(STDIN));
 
                 
                 registro_usuarios($nombreUsuario, $correo, $contraseña, $usuarios);// Llamamos a la funcion para registrar a los usuarios y le pasamos los parametros necesarios para registrar un usuario
@@ -29,10 +41,17 @@
             
             case '2':// Si la opcion es un 2 iniciamos sesion con un usuario previamente creado
 
-                $login = readline("Enter username or email: ");
-                $contraseña = readline("Enter your password: ");
+                // Pedimos al usuario que introduzca el nombre de usuario.
 
-                
+                echo "Introduzca el nombre de usuario o correo del usuario: ";
+
+                $login = trim(fgets(STDIN));
+
+                // Pedimos al usuario que introduzca el correo de usuario.
+                echo "Introduzca la contraseña del usuario: ";
+
+                $contraseña = trim(fgets(STDIN));
+
                 login_usuarios($login, $contraseña, $usuarios);// Llamamos a la funcion para poder logerse a los usuarios y le pasamos los parametros necesarios para logearse los usuarios
                 break;
             
